@@ -1,0 +1,7 @@
+{
+  "less.completion.triggerPropertyValueCompletion": false,
+  "less.compile": {
+
+  "outExt":"wxss"
+  }
+}

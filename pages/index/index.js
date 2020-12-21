@@ -1,54 +1,51 @@
-//index.js
-//获取应用实例
-const app = getApp()
-
+// 第二版  功能不全版
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    input:'',
+    list:[],
+    on:0,
+    off:0
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+  inputHandle:function(e){
+    // console.log(e.detail.value);
+    this.setData({
+      input:e.detail.value
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  addtodoHandle:function(e){
+    if (!this.data.input || !this.data.input.trim()) return
+    var list=this.data.list
+    list.push({name: this.data.input, completed: false })
+    this.foreach(e,list)
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      input:''
+    })
+  },
+  tapHandler:function(e){
+    var index=e.currentTarget.dataset.index
+    var list=this.data.list
+    list[index].completed=!list[index].completed
+    this.foreach(e,list)
+  },
+  iconhandler:function(e){
+    var list=this.data.list
+    var index=e.currentTarget.dataset.index
+    list.splice(index,1)
+    this.foreach(e,list)
+  },
+  foreach:function(e,list){
+    var on=0,off=0
+    list.forEach(function(item){
+      if(item.completed===false){
+        on++
+      }else{
+        off++
+      }
+    })
+    this.setData({
+      list:list,
+      on:on,
+      off:off
     })
   }
 })

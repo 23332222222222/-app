@@ -1,3 +1,4 @@
+<!--第一版 垃圾版-->
 <!--index.wxml-->
 <view class="container">
   <view class="heder">
@@ -15,11 +16,11 @@
       <text>{{on}}</text>
     </view>
     <ul>
-      <li wx:for="{{list}}" wx:key='*this' data-index='{{index}}' bindtap="tapHandler" wx:if="{{!item.completed}}">
+      <li wx:for="{{onlist}}" wx:key='*this' data-index='{{index}}' bindtap="ontapHandler">
         <span></span>
         <icon type="{{ item.completed ? 'success' : 'circle' }}"></icon>
         <text>{{item.name}}</text>
-        <icon type="clear" size="14" catchtap="iconhandler" data-index="{{index}}"></icon>
+        <icon type="clear" size="14" catchtap="iconhandler" data-index="{{index}}" id="on"></icon>
       </li>
     </ul>
     <view class="off">
@@ -27,14 +28,13 @@
       <text>{{off}}</text>
     </view>
     <ul>
-      <li  wx:for="{{list}}" wx:key='*this' data-index='{{index}}'
-      bindtap="tapHandler" wx:if="{{item.completed}}">
+      <li  wx:for="{{offlist}}" wx:key='*this' data-index='{{index}}'
+      bindtap="offtapHandler">
         <span class="bg"></span>
         <icon type="{{ item.completed ? 'success' : 'circle' }}"></icon>
-        <text wx:if="{{item.completed}}">{{item.name}}</text>
-        <icon type="clear" size="14" catchtap="iconhandler" data-index="{{index}}"></icon>
+        <text>{{item.name}}</text>
+        <icon type="clear" size="14" catchtap="iconhandler" data-index="{{index}}" id="off"></icon>
       </li>
     </ul>
   </view>
-  <view class="footer" wx:if="{{list.length===0}}">您还没有任务，请去添加任务</view>
 </view>

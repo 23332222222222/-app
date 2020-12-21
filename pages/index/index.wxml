@@ -19,7 +19,7 @@
         <span></span>
         <icon type="{{ item.completed ? 'success' : 'circle' }}"></icon>
         <text>{{item.name}}</text>
-        <icon type="clear" size="14" catchtap="iconhandler" data-index="{{index}}"></icon>
+        <icon class="icon" type="clear" size="14" catchtap="iconhandler" data-index="{{index}}"></icon>
       </li>
     </ul>
     <view class="off">
@@ -32,7 +32,7 @@
         <span class="bg"></span>
         <icon type="{{ item.completed ? 'success' : 'circle' }}"></icon>
         <text wx:if="{{item.completed}}">{{item.name}}</text>
-        <icon type="clear" size="14" catchtap="iconhandler" data-index="{{index}}"></icon>
+        <icon class="icon" type="clear" size="14" catchtap="iconhandler" data-index="{{index}}"></icon>
       </li>
     </ul>
   </view>

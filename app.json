@@ -8,7 +8,7 @@
     "navigationBarTitleText": "微信小程序",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#222",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
   "sitemapLocation": "sitemap.json"
 }

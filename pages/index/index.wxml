@@ -15,7 +15,7 @@
       <text>{{on}}</text>
     </view>
     <ul>
-      <li wx:for="{{list}}" wx:key='*this' data-index='{{index}}' bindtap="tapHandler" wx:if="{{!item.completed}}">
+      <li wx:for="{{list}}" wx:key="*this" data-index='{{index}}' bindtap="tapHandler" wx:if="{{!item.completed}}">
         <span></span>
         <icon type="{{ item.completed ? 'success' : 'circle' }}"></icon>
         <text>{{item.name}}</text>
@@ -27,7 +27,7 @@
       <text>{{off}}</text>
     </view>
     <ul>
-      <li  wx:for="{{list}}" wx:key='*this' data-index='{{index}}'
+      <li  wx:for="{{list}}" wx:key="*this" data-index='{{index}}'
       bindtap="tapHandler" wx:if="{{item.completed}}">
         <span class="bg"></span>
         <icon type="{{ item.completed ? 'success' : 'circle' }}"></icon>
